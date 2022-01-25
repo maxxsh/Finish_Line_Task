@@ -3,13 +3,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Rick and Morty API</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="/main.js"></script>
+    <script src="main.js"></script>
   </head>
   <body>
     <header>
@@ -28,15 +24,13 @@
         <h1>Rick and Morty Characters</h1>
         <div class="searchContainer">
           <p>Filter by</p>
-          <form id="search">
-            <input name="characterName" />
-          </form>
+          <input id="characterName" />
         </div>
       </div>
-      <u id="cardList"></u>
+      <ul id="cardList"></ul>
       <div class="pagination">
-        <button class="prevBtn">Prev</button>
-        <button class="nextBtn">Next</button>
+        <button class="prevBtn pageBtn">Prev</button>
+        <button class="nextBtn pageBtn">Next</button>
       </div>
     </content>
   </body>
