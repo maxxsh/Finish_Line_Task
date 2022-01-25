@@ -1,24 +1,10 @@
-const displayCardNumber = 8;
-let cardStartNumber = 1;
-let resourceUrl = "https://rickandmortyapi.com/api/character/";
-$(".nextBtn").click(function () {
-  $.startFunction(parseInt($(this).attr("data-next-card")) + 1);
-});
-$(".prevBtn").click(function () {
-  $.startFunction(parseInt($(this).attr("data-prev-card")) - displayCardNumber);
-});
-$("#search").submit(function (event) {
-  $.startFunction(50);
-});
-$.startFunction = function (lastCard) {
-  let cardRange = Array.from(
-    { length: displayCardNumber },
-    (_, i) => i + lastCard
-  );
+const initialUrl = "https://rickandmortyapi.com/api/character/";
+
+$.startFunction = function (resourceUrl) {
   $.get(
-    resourceUrl + cardRange,
+    resourceUrl,
     function (data) {
-      const html = jQuery.map(data, function (card) {
+      const html = jQuery.map(data.results, function (card) {
         return (
           '<li><img src="' +
           card.image +
@@ -27,19 +13,35 @@ $.startFunction = function (lastCard) {
           ' <button class="deleteBtn">Delete</button></div></li>'
         );
       });
+      // add new elements to HTML DOM
       $("#cardList")[0].innerHTML = html.join("");
-      $(".nextBtn").attr("data-next-card", cardRange[cardRange.length - 1]);
-      if (lastCard < 9) {
+      // delete bottons
+      $(".deleteBtn").click(function () {
+        $(this).parent().parent().slideUp();
+      });
+      // page buttons
+      if (data.info.next == null) {
         $(".prevBtn").hide();
       } else {
         $(".prevBtn").show();
-        $(".prevBtn").attr("data-prev-card", cardRange[0]);
+        $(".nextBtn").attr("data-card", data.info.next);
       }
-      $(".deleteBtn").click(function () {
-        $(this).parent().parent().slideUp();
+      if (data.info.prev == null) {
+        $(".prevBtn").hide();
+      } else {
+        $(".prevBtn").show();
+        $(".prevBtn").attr("data-card", data.info.prev);
+      }
+      $(".pageBtn").click(function () {
+        $.startFunction($(this).attr("data-card"));
+      });
+      // filter
+      $("#characterName").on("input", function () {
+        let urlName = initialUrl + "?name=" + $("input").val();
+        $.startFunction(urlName);
       });
     },
     "json"
   );
 };
-$.startFunction(cardStartNumber);
+$.startFunction(initialUrl);
