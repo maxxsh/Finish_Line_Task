@@ -25,7 +25,7 @@ Requirements
 - Delete button in character card should remove that specific card
 - Push your changes to develop using good practices and then create a PR to main
 - Develop the functionality to filter by text filtering by character name
-Plus
+#Plus
 - Improve the performance of the page
 - Apply ADA compliance to the page
 - Create the pagination based on the API results, if click next then show new characters
