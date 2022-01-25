@@ -1,5 +1,5 @@
 # Finish_Line_Task
-# Working example is here https://codepen.io/maxxsh/pen/RwjbMEr
+# Working example is here https://codepen.io/maxxsh/pen/JjOjXbN
 
 As part of our pursuit in finding the right candidate for our open positions we ask that
 you complete the following exercise in GITHub. This exercise should take no more than
