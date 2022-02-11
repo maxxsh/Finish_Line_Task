@@ -14,6 +14,9 @@ header {
 h1 {
   text-align: center;
 }
+h3 {
+  margin: 0;
+}
 .logo {
   border: solid 1px black;
   background-color: white;
@@ -41,15 +44,15 @@ content {
   font-size: 1.2em;
 }
 #cardList {
-  margin: 25px;
+  margin: 10px;
   padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   grid-gap: 15px;
 }
 #cardList li {
-  font-size: calc(0.8vw + 10px);
+  font-size: 19px;
   font-weight: 700;
   overflow: hidden;
   padding: 15px;
@@ -88,6 +91,40 @@ button {
   border-width: thin;
   margin: 8px;
 }
+#pages {
+  display: flex;
+  align-items: center;
+}
+#currentPageNumber {
+    margin: 15px;
+}
+#pages a {
+  border: solid 1px black;
+  padding: 1px 3px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  min-width: 16px;
+  text-align: center;
+}
+#pages #lastPageNumber,
+#pages #firstPageNumber {
+  position: relative;
+  margin: 15px;
+}
+#lastPageNumber:before,
+#firstPageNumber:after {
+  content: "...";
+  position: absolute;
+}
+#lastPageNumber:before {
+  left: -16px;
+}
+#firstPageNumber:after {
+  content: "...";
+  position: absolute;
+  right: -16px;
+}
 
 @media (max-width: 920px) {
   .logo {
@@ -98,6 +135,6 @@ button {
     display: block;
   }
   #cardList {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   }
 }
